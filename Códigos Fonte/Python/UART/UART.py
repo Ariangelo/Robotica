@@ -33,7 +33,7 @@ def keyPressed(e):
             passo = 50
         print(u'Passo: {}'.format(passo))
     elif tecla == '75': #Seta para esquerda
-        serial.write(u'x{}\n'.format(passo).encode())
+        serial.write(u'x{}\n'.format(passo).encode()) 
     elif tecla == '77': #Seta para direita
         serial.write(u'x-{}\n'.format(passo).encode())
     elif tecla == '71': #Home
