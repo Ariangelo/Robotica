@@ -9,11 +9,8 @@
 #define BI1   12
 #define BI2   14
 
-//const char* ssid = "MyASUS";
-//const char* senha = "9a4281138522";
-
-const char* ssid = "Edge";
-const char* senha = "Hubf1aEDGE";
+const char* ssid = "MyASUS";
+const char* senha = "9a4281138522";
 
 int velocidade = 50;
 bool gatinhar = false;
