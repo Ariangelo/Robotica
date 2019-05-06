@@ -1,27 +1,29 @@
 #include <ESP8266WiFi.h>
+#include<DC_Motor.h>
 
-#define PIN_FRENTE    12
-#define PIN_TRAZ      13
-#define PIN_ESQUERDA  14
-#define PIN_DIREITA   15
+#define PWM_B  2
+#define PWM_A  0
+#define STBY  16
+#define AI2   15
+#define AI1   13
+#define BI1   12
+#define BI2   14
 
-const char* ssid = "ssid";
-const char* senha = "senha";
+//const char* ssid = "MyASUS";
+//const char* senha = "9a4281138522";
 
-int frenteLigado = LOW;
-int trazLigado = LOW;
-int esquerdaLigado = LOW;
-int direitaLigado = LOW;
+const char* ssid = "Edge";
+const char* senha = "Hubf1aEDGE";
 
-// Porta web server = 80
+int velocidade = 50;
+bool gatinhar = false;
 WiFiServer server(80);
+DC_Motor motorEsquerdo(BI1, BI2, PWM_B);
+DC_Motor motorDireito(AI1, AI2, PWM_A);
 
 void setup() {
-  pinMode(PIN_FRENTE, OUTPUT);
-  pinMode(PIN_TRAZ, OUTPUT);
-  pinMode(PIN_ESQUERDA, OUTPUT);
-  pinMode(PIN_DIREITA, OUTPUT);
-
+  pinMode(STBY, OUTPUT);
+  digitalWrite(STBY, HIGH);
   Serial.begin(115200);
   // Conexao to Wi-Fi
   Serial.print("Conectando ");
@@ -43,6 +45,7 @@ void setup() {
 }
 
 void loop() {
+  if (gatinhar) acaoGatinhar();
   WiFiClient client = server.available();   // Aguarda requisicoes de clientes
   if (client) {                             // Se cliente conectado,
     String cabec = ""; // Armazenamento HTTP request
@@ -56,7 +59,6 @@ void loop() {
         // significa que a solicitação http terminou,
         // desta forma e possível enviar uma resposta http
         if (c == '\n' && linhaAtualVazia) {
-          // processa o comando GET enviado do cliente
           processaGET(cabec);
           // envia um cabecalho de resposta http padrao
           client.println("HTTP/1.1 200 OK");
@@ -67,8 +69,12 @@ void loop() {
           client.println("<!doctype html>");
           client.println("<html>");
           client.println("   <head>");
-          client.println("      <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js\"></script>");
-          client.println("      <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css\">");
+          client.println("      <meta charset=\"utf-8\">");
+          client.println("      <link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css\">");
+          client.println("      <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">");
+          client.println("      <link rel=\"shortcut icon\" href=\"https://www.google.com/s2/favicons?domain=www.uepg.br\">");
+          client.println("      <script src=\"https://code.jquery.com/jquery-1.12.4.js\"></script>");
+          client.println("      <script src=\"https://code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>");
           client.println("      <style>");
           client.println("         .content {");
           client.println("         max-width: 280px;");
@@ -93,33 +99,45 @@ void loop() {
           client.println("        }");
           client.println("      </style>");
           client.println("   </head>");
+          client.println("   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
           client.println("   <body>");
           client.println("      <div class=\"content\">");
           client.println("         <h3 align=\"center\">Click na seta correspondente ao movimento desejado, para parar click Home.</h3>");
           client.println("         <div class=\"grid\">");
-          client.println("            <div id=\"btnCimaEsq\" class=\"grid-item\"><span class=\"fa\" style=\"transform: rotate(-45deg);\">&#xf0aa;</span></div>");
+          client.println("            <div class=\"grid-item\"></div>");
           client.println("            <div id=\"btnCima\" class=\"grid-item\"><span class=\"fa\">&#xf0aa;</span></div>");
-          client.println("            <div id=\"btnCimaDir\" class=\"grid-item\"><span class=\"fa\" style=\"transform: rotate(45deg);\">&#xf0aa;</span></div>");
+          client.println("            <div class=\"grid-item\"></div>");
           client.println("            <div id=\"btnEsquerda\" class=\"grid-item\"><span class=\"fa\">&#xf0a8;</span></div>");
           client.println("            <div id=\"btnHome\" class=\"grid-item\"><span class=\"fa\">&#xf015;</span></div>");
           client.println("            <div id=\"btnDireita\" class=\"grid-item\"><span class=\"fa\">&#xf0a9;</span></div>");
-          client.println("            <div id=\"btnBaixoEsq\" class=\"grid-item\"><span class=\"fa\" style=\"transform: rotate(45deg);\">&#xf0ab;</span></div>");
+          client.println("            <div class=\"grid-item\"></div>");
           client.println("            <div id=\"btnBaixo\" class=\"grid-item\"><span class=\"fa\">&#xf0ab;</span></div>");
           client.println("            <div id=\"btnBaixoDir\" class=\"grid-item\"><span class=\"fa\" style=\"transform: rotate(-45deg);\">&#xf0ab;</span></div>");
           client.println("         </div>");
+          client.println("         <p>");
+          client.println("           <label for=\"aceleracao\">Aceleração:</label>");
+          client.println("           <input type=\"text\" id=\"aceleracao\" readonly style=\"border:0; color:#f6931f; font-weight:bold;\">");
+          client.println("         </p>");
+          client.println("         <div id=\"slider\"></div>");
           client.println("      </div>");
           client.println("      <script>");
           client.println("         $(document).ready(function(){");
           client.println("             var button = $(\".grid-item\");");
           client.println("             button.on(\"touchstart mousedown\", function(){");
           client.println("                 $(this).css(\"backgroundColor\", \"Blue\");");
-          client.println("                 window.location.pathname = \"/\" + $(this)[0].id;");
+          client.println("                 window.location.pathname = \"/\" + $(this)[0].id + \";\" + $(\"#slider\").slider(\"value\");");
           client.println("             });");
-          client.println("             button.on(\"touchleave touchend mouseup\", function(){");
-          client.println("                 $(this).css(\"backgroundColor\", \"POWDERBLUE\");");
-          client.println("                 window.location.pathname = \"/btnHome\";");
+          client.println("             $(\"#slider\").slider({");
+          client.println("               value:" + String(velocidade) + ",");
+          client.println("               min: 0,");
+          client.println("               max: 100,");
+          client.println("               step: 10,");
+          client.println("               slide: function(event, ui) {");
+          client.println("                 $(\"#aceleracao\" ).val(ui.value);");
+          client.println("               }");
           client.println("             });");
-          client.println("         });");
+          client.println("             $(\"#aceleracao\").val($(\"#slider\").slider(\"value\"));");
+          client.println("          });");
           client.println("      </script>");
           client.println("  </body>");
           client.println("</html>");
@@ -136,10 +154,18 @@ void loop() {
     }
     // um atraso para o web browser processar a resposta
     delay(10);
-    // close the connection:
     // Fecha conexao
     client.stop();
   }
+}
+
+void acaoGatinhar() {
+  motorEsquerdo.horario();
+  motorDireito.parar();
+  delay(500);
+  motorEsquerdo.parar();
+  motorDireito.horario();
+  delay(500);
 }
 
 void processaGET(String c) {
@@ -152,46 +178,45 @@ void processaGET(String c) {
       ind++;
     }
     String acao = info.substring(0, info.indexOf(" HTTP/1.1"));
+    String vel = acao.substring(acao.indexOf(";") + 1);
+    acao = acao.substring(0, acao.indexOf(";"));
+    velocidade = vel.toInt();
+    gatinhar = false;
+    Serial.println(acao);
+    Serial.println(velocidade);
+    motorEsquerdo.velocidade(velocidade);
+    motorDireito.velocidade(velocidade);
     if (acao == "btnCimaEsq") {
-      frenteLigado = HIGH;
-      esquerdaLigado = HIGH;
     }
     else if (acao == "btnCima") {
-      frenteLigado = HIGH;
+      motorEsquerdo.horario();
+      motorDireito.horario();
     }
     else if (acao == "btnCimaDir") {
-      frenteLigado = HIGH;
-      direitaLigado = HIGH;
+
     }
     else if (acao == "btnEsquerda") {
-      esquerdaLigado = HIGH;
+      motorEsquerdo.parar();
+      motorDireito.horario();
     }
     else if (acao == "btnHome") {
-      frenteLigado = LOW;
-      trazLigado = LOW;
-      esquerdaLigado = LOW;
-      direitaLigado = LOW;
+      motorEsquerdo.parar();
+      motorDireito.parar();
     }
     else if (acao == "btnDireita") {
-      direitaLigado = HIGH;
+      motorEsquerdo.horario();
+      motorDireito.parar();
     }
     if (acao == "btnBaixoEsq") {
-      trazLigado = HIGH;
-      esquerdaLigado = HIGH;
+
     }
     else if (acao == "btnBaixo") {
-      trazLigado = HIGH;
+      motorEsquerdo.antiHorario();
+      motorDireito.antiHorario();
     }
     else if (acao == "btnBaixoDir") {
-      trazLigado = HIGH;
-      direitaLigado = HIGH;
+      gatinhar = true;
     }
-
   }
 
-  //Atualiza as saidas
-  digitalWrite(PIN_FRENTE, frenteLigado);
-  digitalWrite(PIN_TRAZ, trazLigado);
-  digitalWrite(PIN_ESQUERDA, esquerdaLigado);
-  digitalWrite(PIN_DIREITA, direitaLigado);
 }
