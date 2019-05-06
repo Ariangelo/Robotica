@@ -12,7 +12,7 @@ Para conectar o módulo ESP ao Wi-Fi é necessário apenas de algumas linhas de 
 Esta documentação irá guiá-lo através de várias classes, métodos e propriedades da biblioteca ESP8266WiFi. Para aqueles que não estão familiarizados com C ++ e Arduino, é conveniente informar que os conceitos gerais e exemplos são bem detalhados e sempre incluem exemplos de uso.
 
 * [Exemplo de servidor web utilizado para testes em laboratório.](WebServerESP8266/WebServerESP8266.ino "Exemplo WEB server")
-* [Exemplo de servidor web utilizado para testes em laboratório com display OLED.](WebServerESP8266-OLED/WebServerESP8266.ino "Exemplo WEB server - OLED")
+
 
 Cliente WEB utizando ESP8266
 ------
@@ -25,5 +25,4 @@ Para conectar o módulo ESP ao Wi-Fi é necessário apenas de algumas linhas de 
 
 Esta documentação irá guiá-lo através de várias classes, métodos e propriedades da biblioteca ESP8266WiFi. Para aqueles que não estão familiarizados com C ++ e Arduino, é conveniente informar que os conceitos gerais e exemplos são bem detalhados e sempre incluem exemplos de uso.
 
-* [Exemplo de cliente web utilizado para testes em laboratório.](WebClientESP8266/WebClientESP8266.ino "Exemplo WEB server")
 
