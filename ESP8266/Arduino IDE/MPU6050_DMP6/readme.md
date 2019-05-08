@@ -22,7 +22,7 @@ MPU6050 mpu;
 ```
 * Na utilização do DMP (Digital motion Processor) devera ser seguido o esquema de ligação apresentado.
 * Detalhes do sensor **MPU6050** e Esquema de ligação do sensor **MPU6050**
-
+<img align="center"  src="../../../Imagens/MPU6050_opt.jpg">
 ![SensorMPU6050](../../../Imagens/MPU6050_opt.jpg)
 ![Esquema básico de ligação MPU6050](../../../Imagens/D1-mini_MCU6050_bb.png)
 
