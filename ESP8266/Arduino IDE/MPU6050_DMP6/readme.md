@@ -24,11 +24,8 @@ MPU6050 mpu;
 * Detalhes do sensor **MPU6050** e Esquema de ligação do sensor **MPU6050**
 <p align="center">
   <img src="../../../Imagens/MPU6050_opt.jpg">
+  <img src="../../../Imagens/D1-mini_MCU6050_bb.png">
 </p>
-
-
-![SensorMPU6050](../../../Imagens/MPU6050_opt.jpg)
-![Esquema básico de ligação MPU6050](../../../Imagens/D1-mini_MCU6050_bb.png)
 
 * Para verificar o desempenho e funcionamento do sensor **MPU6050** sera necessário a utilização do **Processing software**, no site https://processing.org/download/
 
