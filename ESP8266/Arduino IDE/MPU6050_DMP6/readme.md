@@ -1,6 +1,6 @@
 # Códigos fonte ESP8266 - Arduino IDE
 
-Infravermelho utizando ESP8266
+Acelerômetro utizando ESP8266
 ------
 
 :heavy_check_mark: [Link para: Esquema de ligação e simulação no Tinkercad](https://www.tinkercad.com/things/0rbIx4AF0Nc)
@@ -9,7 +9,7 @@ Infravermelho utizando ESP8266
 * Na utilização do receptor infravermeloho (IR) com a IDE arduino e ESP8266 será necessário a importação da biblioteca **IRremoteESP8266**.
 * Instalação da biblioteca **IRremoteESP8266**
 
-![Instalação IRremoteESP8266](../../../Imagens/IR.png)
+![Instalação IRremoteESP8266](../../../Imagens/D1-mini_MCU6050_bb.png)
 
 * Detalhes e particularidades do código usando a IDE Arduino e ESP8266 como receptor de códigos infravermelho
 
