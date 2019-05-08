@@ -3,13 +3,10 @@
 Acelerômetro utizando ESP8266
 ------
 
-:heavy_check_mark: [Link para: Esquema de ligação e simulação no Tinkercad](https://www.tinkercad.com/things/0rbIx4AF0Nc)
-![Uso de sensor IR e controle remoto](https://csg.tinkercad.com/things/0rbIx4AF0Nc/t725.png?rev=1541075331212000000&s=d10c875abfeb46cf1f059a8de10aafd7&v=1&type=circuits)
+* Na utilização do DMP (Digital motion Processor)  com a IDE arduino e ESP8266 será necessário a importação da biblioteca **MCU6050**.
+* Instalação da biblioteca **MCU6050**
 
-* Na utilização do receptor infravermeloho (IR) com a IDE arduino e ESP8266 será necessário a importação da biblioteca **IRremoteESP8266**.
-* Instalação da biblioteca **IRremoteESP8266**
-
-![Instalação IRremoteESP8266](../../../Imagens/D1-mini_MCU6050_bb.png)
+![Instalação MCU6050](../../../Imagens/BibliotecaMCU6050_bb.png)
 
 * Detalhes e particularidades do código usando a IDE Arduino e ESP8266 como receptor de códigos infravermelho
 
