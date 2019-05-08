@@ -6,7 +6,7 @@ Acelerômetro utizando ESP8266
 * Na utilização do DMP (Digital motion Processor)  com a IDE arduino e ESP8266 será necessário a importação da biblioteca **MPU6050**.
 * Instalação da biblioteca **MPU6050**
 
-![Instalação MPU6050](../../../Imagens/BibliotecaMPU6050_bb.png)
+![Instalação MPU6050](../../../../Imagens/BibliotecaMPU6050_bb.png)
 
 * Detalhes e particularidades do código usando a IDE Arduino e ESP8266 como receptor de códigos infravermelho
 
