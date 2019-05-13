@@ -24,4 +24,5 @@ Procedimentos de Calibração do Acelerômetro MPU6050
   <img src="../../../Imagens/MPU6050_opt.jpg">
 </p>
 
-* Sistema [Acelerometro-Angulo][../Acelerometro-Angulo] para teste da Calibração.
+* Sistema [Calibração acelerômetro **MPU 6050**](../Acelerometro-Angulo "Teste de Calibração e utilização **MPU6050** Arduino IDE")
+
