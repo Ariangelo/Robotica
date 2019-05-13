@@ -20,6 +20,6 @@ Procedimentos de Calibração do Acelerômetro MPU6050
 * O **MPU6050** deve ser colocado na posição horizontal, com as escritas da placa de circuito impresso orientadas para cima.
 * Não toque no dispositivo até que seja mostrada a mensagem final.
 
-<figure class="video_container">
-  <iframe src="https://www.youtube.com/embed/enMumwvLAug" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
+<p align="center">
+  <img src="../../../Imagens/MPU6050_opt.jpg">
+</p>
