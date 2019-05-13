@@ -10,7 +10,10 @@ Calibração de Acelerômetro MPU6050 utizando ESP8266
   <img src="../../../Imagens/6DOF_en.png" width="640">
 </p>
 
-* Como o movimento ao longo de cada um dos três eixos é independente um do outro e independente da rotação sobre qualquer um desses eixos, o movimento tem seis graus de liberdade. Arremeter o **nariz (aeronave)** para cima ou para para baixo **PITCH**. Realizar uma guinada  do **corpo (aeronave)** da esquerda para a direita **movimento circular (no sentido horário ou anti-horário) YAW**.  Finalmente rolar para o lado esquerdo ou direito **ROLL**. 
+* Assim como o movimento ao longo de cada um dos três eixos é independente, também a rotação sobre qualquer um desses eixos, o movimento tem seis graus de liberdade. 
+  Arremeter o **nariz (aeronave)** para cima ou para para baixo **PITCH**. 
+  Realizar uma guinada  do **corpo (aeronave)** da esquerda para a direita **movimento circular (no sentido horário ou anti-horário) YAW**.
+  Finalmente rolar para o lado esquerdo ou direito **ROLL**. 
 
 Procedimentos de Calibração do Acelerômetro MPU6050
 ------
