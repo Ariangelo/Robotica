@@ -67,8 +67,8 @@ void loop() {
   mpu.dmpGetQuaternion(&q, bufferFIFO);
   mpu.dmpGetGravity(&gravidade, &q);
   mpu.dmpGetYawPitchRoll(ypr, &q, &gravidade);
-  angulo = ypr[2] * RAD_TO_DEG;
-  
+  //Utilização do Roll como valor do ângulo considerando montagem do acelerômetro
+  angulo = ypr[2] * RAD_TO_DEG; // Converte o valor ypr[2] para ângulo em graus  
   Serial.print("Ângulo obtido: ");
   Serial.println(angulo);
 }
