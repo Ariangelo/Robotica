@@ -4,7 +4,7 @@ Sensor ultrassônico (HC-SR04) utizando ESP8266
 ------
 
 * Sensor ultrassônico (HC-SR04)  com a IDE arduino e ESP8266 será necessário a importação da biblioteca **Ultrasonic**.
-* Instalação da biblioteca [**Ultrasonic**](ESP8266/Bibliotecas/Ultrasonic "Instalação Biblioteca Ultrasonic - Arduino IDE").
+* Instalação da biblioteca [**Ultrasonic**](../../Bibliotecas/Ultrasonic "Instalação Biblioteca Ultrasonic - Arduino IDE").
 
 * Detalhes e particularidades do código usando a IDE Arduino e ESP8266
 
