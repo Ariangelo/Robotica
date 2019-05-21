@@ -5,10 +5,10 @@ Algumas ideias foram recolhidas de uma biblioteca criada pelo **ITead studio** e
 
 Veja os códigos e os exemplos para entender como a biblioteca funciona.
 
-O código de desvio padrão pode ser removido da compilação, resultando em uma economia significativa de recursos. Para fazer este comentário, o
-
+O código de desvio padrão pode ser removido da compilação, resultando em uma economia significativa de recursos. Para fazer isto basta comentar a linha.
+```c++
 #define COMPILE_STD_DEV
-
+```
 definição no arquivo de cabeçalho.
 
 
