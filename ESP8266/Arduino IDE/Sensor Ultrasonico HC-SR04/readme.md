@@ -34,6 +34,6 @@ void loop() {
 * Na utilização do Sensor ultrassônico (HC-SR04) devera ser seguido o esquema de ligação apresentado.
 * Detalhes do sensor **HC-SR04** e Esquema de ligação do sensor **HC-SR04**
 <p align="center">
-  <img src="../../../Imagens/HC-SR04-Ultrasonic-Sensor.jpg">
-  <img src="../../../Imagens/D1-mini_HC-SR04_bb.png">
+  <img src="../../../Imagens/HC-SR04-Ultrasonic-Sensor.jpg" width="60%">
+  <img src="../../../Imagens/D1-mini_HC-SR04_bb.png" width="60%">
 </p>
