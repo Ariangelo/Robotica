@@ -11,11 +11,6 @@ import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-/*
-import jssc.SerialPort;
-import jssc.SerialPortException;
-import jssc.SerialPortList;
- */
 public class Serial {
 
     private String ardPort;
@@ -83,15 +78,6 @@ public class Serial {
                     }
                 });
         return serPort != null;
-    }
-
-    public void write(int[] text) {
-        /*  try {
-            serPort.writeIntArray(text);
-        } catch (SerialPortException ex) {
-            System.out.println("ERROR: writing '" + text + "': " + ex.toString());
-        }*/
-
     }
 
     public void write(String text) {
