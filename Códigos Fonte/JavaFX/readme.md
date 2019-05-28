@@ -9,5 +9,5 @@ Aplicação com Acelerômetro MPU6050 e PID (Controlador proporcional integral d
 * Não esquecer de ajustar os dados de calibração e orientação do seu sistema.
 
 <p align="center">
-  <img src="../../../Imagens/D1-mini_Self-Balance_bb.png" width="640">
+  <img src="../../Imagens/D1-mini_Self-Balance_bb.png" width="640">
 </p>
