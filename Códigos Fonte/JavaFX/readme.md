@@ -7,6 +7,7 @@ Aplicação com Acelerômetro MPU6050 e PID (Controlador proporcional integral d
 * Na pasta **arduino-code** encontrasse o código em c++ que permite a interface com o sistema desenvolvido em javaFX.
 * Deverá ser seguido o esquema de ligação dos sensores e atuadores conforme figura abaixo.
 * Não esquecer de ajustar os dados de calibração e orientação do seu sistema.
+* Para **download** do instalador acesse: http://deinfo.uepg.br/~ari/aulas/robotica/
 
 <p align="center">
   <img src="../../Imagens/D1-mini_Self-Balance_bb.png" width="640">
