@@ -8,6 +8,8 @@ Aplicação com Acelerômetro MPU6050 e PID (Controlador proporcional integral d
 * Deverá ser seguido o esquema de ligação dos sensores e atuadores conforme figura abaixo.
 * Não esquecer de ajustar os dados de calibração e orientação do seu sistema.
 * Para **download** do instalador acesse: http://deinfo.uepg.br/~ari/aulas/robotica/setup-SelfBalance.exe
+* Download do instalador para Windos 64bits [**Self-Balance**](http://deinfo.uepg.br/~ari/aulas/robotica/setup-SelfBalance.exe "Instalação do sisterma de acompanhamento de calibração do Robô de Autoequilibrio na plataforma win-64).
+
 
 <p align="center">
   <img src="../../Imagens/D1-mini_Self-Balance_bb.png" width="640">
