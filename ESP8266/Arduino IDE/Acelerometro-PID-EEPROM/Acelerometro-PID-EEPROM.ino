@@ -42,7 +42,7 @@ float ypr[3]; // [yaw, pitch, roll]
 
 //PID
 double setpoint;
-double angulo, distancia, torque;
+double angulo, torque;
 PID pid(&angulo, &torque, &setpoint, 1, 0, 0, DIRECT);
 
 boolean infoCompleta = false;
