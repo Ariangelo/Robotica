@@ -7,7 +7,8 @@ Aplicação com Acelerômetro MPU6050 e PID (Controlador proporcional integral d
 * Na pasta **arduino-code** encontrasse o código em c++ que permite a interface com o sistema desenvolvido em javaFX.
 * Deverá ser seguido o esquema de ligação dos sensores e atuadores conforme figura abaixo.
 * Não esquecer de ajustar os dados de calibração e orientação do seu sistema.
-* Para **download** do instalador acesse: http://deinfo.uepg.br/~ari/aulas/robotica/setup-SelfBalance.exe
+* **Download** do instalador para Windos 64bits - [**Self-Balance Setup**](http://deinfo.uepg.br/~ari/aulas/robotica/setup-SelfBalance.exe "Instalação do sisterma de acompanhamento de calibração do Robô de Autoequilibrio na plataforma win-64").
+* **Download** do JAR - [**Self-Balance**](http://deinfo.uepg.br/~ari/aulas/robotica/Self-Balance-1.0-SNAPSHOT-jar-with-dependencies.jar "Instalação do sisterma de acompanhamento de calibração do Robô de Autoequilibrio multi plataforma").
 
 <p align="center">
   <img src="../../Imagens/D1-mini_Self-Balance_bb.png" width="640">
