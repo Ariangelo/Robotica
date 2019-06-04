@@ -7,12 +7,14 @@ Uso da EEPROM - Electrically-Erasable Programmable Read-Only Memory
 
 Software
 * Função EEPROM::begin()
+
  * EEPROM.begin(4);
 
 Necessária sempre que for ler ou escrever na EEPROM. O parâmetro é o tamanho de inicialização, que precisa estar entre 4 até 4096. Neste caso, foi iniciado o mínimo possível, 4 Bytes.
 
 * Função EEPROM:commit()
- - EEPROM.commit();
+
+ * EEPROM.commit();
 
 Esta função salva o que escrevemos anteriormente, sem isto, não irá salvar! Também pode ser feito pelo comando EEPROM.end(), que também efetua o commit().
 
