@@ -18,14 +18,11 @@ Esta função salva o que escrevemos anteriormente, sem isto, não irá salvar! 
 
 * Para maiores informações consulte: https://www.arduino.cc/en/Reference/EEPROM
 
- 
-
 * Detalhes e particularidades do código usando a IDE Arduino e ESP8266
 
 ```c++
 /********************************************************
- * PID Exemplo Básico
- * Lê entrada analógica e controla uma saída PWM
+ * PID Exemplo Básico com uso da EEPROM
  ********************************************************/
 
 #include "EEPROM.h"
