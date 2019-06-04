@@ -3,7 +3,6 @@
 #include "Wire.h"
 #include "PID_v1.h"
 #include "EEPROM.h"
-#include "Ultrasonic.h"
 
 #define PWM_B  2
 #define PWM_A  2
@@ -11,9 +10,6 @@
 #define AI1   13
 #define BI1   12
 #define BI2   14
-
-#define TRIGGER_PIN  0
-#define ECHO_PIN     15
 
 #define VEL_MIN_ABS 40
 #define PWM_MAX 1023
@@ -30,8 +26,6 @@ struct Configuration {
   int tempoAmostragem;
 };
 
-Ultrasonic ultrasonic(TRIGGER_PIN, ECHO_PIN);
-
 MPU6050 mpu;
 // controles MPU e variaveis de status
 bool dmpPronto = false;
@@ -47,8 +41,8 @@ VectorFloat gravidade; // [x, y, z] vetor da forca da gravidade
 float ypr[3]; // [yaw, pitch, roll]
 
 //PID
-double setpoint, objetivo;
-double angulo, distancia, torque = 0;
+double setpoint;
+double angulo, distancia, torque;
 PID pid(&angulo, &torque, &setpoint, 1, 0, 0, DIRECT);
 
 boolean infoCompleta = false;
@@ -56,11 +50,6 @@ char fimInformacao = '*';
 boolean conectaExterno = true;
 
 Configuration confValues;
-
-unsigned long contador;    // controle de tempo para amostragem da distância
-unsigned long intervalo = 2000;     // Tempo em ms do intervalo a ser executado
-
-bool parado = true, frente = false, voltar = false;
 
 void setup() {
   pinMode(PWM_A, OUTPUT);
@@ -92,12 +81,10 @@ void setup() {
     tamanhoInformacao = mpu.dmpGetFIFOPacketSize();
     //setup PID
     setpoint = confValues.setpoint;
-    objetivo = setpoint;
     pid.SetMode(AUTOMATIC);
     pid.SetTunings(confValues.Kp, confValues.Ki, confValues.Kd);
     pid.SetSampleTime(confValues.tempoAmostragem);
     pid.SetOutputLimits(-100, 100);
-    contador = millis();
   } else {
     Serial.print("Inicializacao DMP falhou (codigo ");
     Serial.print(statusDispositivo);
@@ -116,27 +103,6 @@ void loop() {
   if (!dmpPronto) {
     return;
   } 
-  /*
-  if (millis() - contador > intervalo) {
-    if (parado) {
-      objetivo = confValues.setpoint;
-      parado = false;
-      frente = true;
-    }
-    if (frente) {
-      objetivo = confValues.setpoint - 0.9;
-      frente = false;
-      voltar = true;
-    }
-    if (voltar) {
-      objetivo = confValues.setpoint + 1.0;
-      voltar = false;
-      parado = true;
-    }
-    contador = millis();
-  }
-  ajustaSetpoint();
-  */
   // Espera pela interrupcao do MPU ou informacao extra
   while (contadorFIFO < tamanhoInformacao) {
     contadorFIFO = mpu.getFIFOCount();
@@ -186,17 +152,6 @@ void loop() {
   angulo = ypr[2] * RAD_TO_DEG; // Converte o valor ypr[2] para ângulo em graus
 }
 
-void ajustaSetpoint() {
-  if (setpoint == objetivo) {
-    return;
-  }
-  if (setpoint > objetivo) {
-    setpoint -= 0.05;
-  } else {
-    setpoint += 0.05;
-  }
-}
-
 void mover(int velocidade) {
   int velocidadeReal = abs(velocidade * PWM_MAX / 100);
   digitalWrite(AI1, velocidade > 0 ? HIGH : LOW);
@@ -238,18 +193,6 @@ void ESPserialEvent() {
         break;
       case 't':
         confValues.tempoAmostragem = Serial.parseInt();
-        break;
-      case 'f':
-        //Para frente
-        setpoint = confValues.setpoint - 0.5;
-        break;
-      case 'c':
-        //Para trás
-        setpoint = confValues.setpoint + 1.0;
-        break;
-      case 'h':
-        //Equilíbrio
-        setpoint = confValues.setpoint;
         break;
     }
     infoCompleta = (c == fimInformacao) || (c == '\n');
