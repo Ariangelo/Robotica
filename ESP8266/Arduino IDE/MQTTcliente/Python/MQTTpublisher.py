@@ -7,10 +7,10 @@ import time
 import paho.mqtt.client as mqtt
 
 #definicoes: 
-broker = 'm16.cloudmqtt.com'
-portaBroker = 11124 #1883
-usuario = 'lsqvkvqh'
-senha = 'rc9HDex9Z_SF'
+broker = 'SeuMQTT.cloudmqtt.com'
+portaBroker = 00000 # Porta atribuida pelo cloudmqtt
+usuario = 'usuario' # Usuario atribuido pelo cloudmqtt
+senha = 'senha' # Senha atribuida pelo cloudmqtt
 topico = 'Sistemas.Embarcados.Topico.Entrada' #dica: o nome do topico deve ser 'unico', 
 
 #Callback - conexao ao broker realizada
