@@ -13,7 +13,7 @@ MQTT (Message Queuing Telemetry Transport) é um protocolo de mensagens disposit
 * Na utilização do protocolo MQTT com a IDE arduino e ESP8266 será necessário a importação da biblioteca **PubSubClient**.
 * Instalação da biblioteca **PubSubClient**
 
-![Instalação PubSubClient](../../../Imagens/ImportarBiblioteca.png)
+![Instalação PubSubClient](../../Imagens/ImportarBiblioteca.png)
 
 * Detalhes e particularidades do código usando a IDE Arduino e ESP8266
 
