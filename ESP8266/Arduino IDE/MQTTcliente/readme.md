@@ -27,7 +27,7 @@ const char* mqtt_server = "broker.mqtt-dashboard.com"; // Servidor MQTT - Broker
 const char* topico = "Sistemas.Embarcados.Topico.Entrada"; 
 
 //informações do broker MQTT - Verifique as informações geradas pelo CloudMQTT
-const char* mqttServer = "Servidot cloudmqtt.com";          //server
+const char* mqttServer = "Servidor cloudmqtt.com";          //server
 const char* mqttUser = "Usuario";                           //user
 const char* mqttPassword = "************";                  //password
 const int mqttPort = 00000;                                 //port
