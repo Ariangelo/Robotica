@@ -64,10 +64,10 @@ unsigned long contador;    // controle de tempo para amostragem da distância
 unsigned long intervalo = 500;     // Tempo em ms do intervalo a ser executado
 
 //informações do broker MQTT - Verifique as informações geradas pelo CloudMQTT
-const char* mqttServer = "crobotica.deinfo.uepg.br"; //server
-const char* mqttUser = "";                           //user
-const char* mqttPassword = "";                       //password
-const int mqttPort = 1883;                           //port
+const char* mqttServer = "xxxxxxxx";   //server
+const char* mqttUser = "xxxxxxx";      //user
+const char* mqttPassword = "xxxxxxx";  //password
+const int mqttPort = 1883;             //port
 const char* topicoEntrada = "Sistemas.Embarcados.Topico.Entrada";  //tópico que sera assinado
 const char* topicoSaida = "Sistemas.Embarcados.Topico.Saida";  //tópico que sera assinado
 bool autenticacao = false;
@@ -298,10 +298,6 @@ void loop() {
 }
 
 void ajustaSetpoint() {
-  //Serial.print(setpoint);
-  //Serial.print(" - ");
-  //Serial.println(objetivo);
-  //delay(1000);
   if (setpoint == objetivo) {
     return;
   }
