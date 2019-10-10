@@ -14,8 +14,8 @@
 #define BAND      915E6
 #define TIME_ZONE    -3
 
-const char* ssid  = "wirelessROBOTICA";
-const char* senha = "mecatronica";
+const char* ssid  = "SSID";
+const char* senha = "senha";
 
 unsigned long contador;    // the debounce time; increase if the output flickers
 unsigned long intervalo = 1000;     // Tempo em ms do intervalo a ser executado
