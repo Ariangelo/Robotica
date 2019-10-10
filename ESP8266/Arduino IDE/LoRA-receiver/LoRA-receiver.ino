@@ -23,7 +23,7 @@ void setup() {
   pinMode(OLED_RST, OUTPUT);
   digitalWrite(OLED_RST, LOW);    // seta GPIO16 LOW para resetar OLED
   delay(50);
-  digitalWrite(16, HIGH); // enquanto OLED estiver ativo, GPIO16 deve estar em HIGH
+  digitalWrite(OLED_RST, HIGH); // enquanto OLED estiver ativo, GPIO16 deve estar em HIGH
   // Mostrar informacao no Display OLED
   display.init();
   display.setTextAlignment(TEXT_ALIGN_CENTER_BOTH);
