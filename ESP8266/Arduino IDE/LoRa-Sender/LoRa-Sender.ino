@@ -23,8 +23,6 @@ unsigned long intervalo = 1000;     // Tempo em ms do intervalo a ser executado
 WiFiUDP ntpUDP; // Cliente UDP (User Datagram Protocol) para o NTP (Network Time Protocol)
 NTPClient horaCliente(ntpUDP, "pool.ntp.org", TIME_ZONE * 3600, 60000); // Configuracao do Cliente NTP
 
-
-
 void setup() {
   // Conexao to Wi-Fi
   // Mostrar informacao na porta Serial
@@ -52,7 +50,6 @@ void setup() {
     Serial.println("Falha ao conectar o LoRa");
     while (1);
   }
-
   horaCliente.begin();
   contador = millis();
 }
