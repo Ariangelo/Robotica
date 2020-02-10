@@ -1,5 +1,0 @@
-DC_Motor   	KEYWORD1
-horario		KEYWORD2
-antiHorario	KEYWORD2
-velocidade	KEYWORD2
-parar	    KEYWORD2
