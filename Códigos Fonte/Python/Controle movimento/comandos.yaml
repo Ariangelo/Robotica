@@ -1,0 +1,27 @@
+microSteps: 1.0
+stepPerRevolution: 200
+distancePerRevolution: 8.0
+acceleration: 2500
+speed: 1250
+repeat: false
+movements:
+    - value: 50
+      acceleration: 2000
+      speed: 800
+      wait: 1
+    - value: 75
+      acceleration: 2000
+      speed: 800
+      wait: 1
+    - value: 30
+      acceleration: 2000
+      speed: 800
+      wait: 3
+    - value: 50
+      acceleration: 2000
+      speed: 800
+      wait: 2
+    - value: 200
+      acceleration: 2000
+      speed: 800
+      wait: 3
